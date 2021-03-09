@@ -1,0 +1,80 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<style>
+
+    h5 {
+        font-size: 10px;
+    }
+
+    #mybtn {
+        font-size:10px;
+       height:20px;
+        
+    }
+</style>
+
+
+
+@{
+    if (ViewBag.cart != null)
+    {
+        foreach (var item in ViewBag.cart)
+        {
+
+            <a href="#">
+
+                <div class="row">
+                    <img class="col-4" src="~/uploads/@item.Product.ImgUrl" id="myimg" />
+                    <div class="col-8">
+                        <h5>@item.Product.Name</h5>
+                        <span>@item.Quantity  Qun</span>
+                    </div>
+
+                </div>
+
+
+            </a>
+
+
+        };
+
+        <a >
+            <div class="row" >
+
+                <div class="col-6 p-0 ">
+                    <a  class=" btn btn-secondary p-0"  id="mybtn" asp-controller="Cart" asp-action="Index">View Cart</a>
+                </div>
+
+                
+                <div class="col-6">
+                    <a class=" btn btn-success p-0" id="mybtn">Check out</a>
+                </div>
+            </div>
+        </a>
+    }
+    else
+    {
+
+        <a>
+            <div class="row">
+                <div class="col-6">
+                    <button class=" btn btn-secondary p-0" id="mybtn" asp-controller="Cart" asp-action="Index">View Cart</button>
+                </div>
+
+                
+                <div class="col-6">
+                    <button class=" btn btn-success p-0" id="mybtn" asp-controller="Home" asp-action="Index">Continue Shopping</button>
+                </div>
+            </div>
+        </a>
+
+    }
+
+}
+
+
+

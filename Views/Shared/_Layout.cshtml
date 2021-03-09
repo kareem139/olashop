@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - olashop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/Swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="~/Swiper/swiper-bundle.css" rel="stylesheet" />
+    <link href="~/css/toastr.min.css" rel="stylesheet" />
+
+    <link href="~/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="~/css/all.min.css" rel="stylesheet" />
+    <link href="~/css/themes/black-cab/AwesomeMvc.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    <link href="~/fontawesome-iconpicker/css/fontawesome-iconpicker.min.css" rel="stylesheet" />
+</head>
+<style>
+    .mt
+    {
+        margin-top: 130px;
+    }
+    #carticon {
+        color: #5dd0d0;
+    }
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        color: #82c3c3;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    #navbarNav{
+        font-size:12px;
+    }
+
+    #searchinputlarg {
+        margin: auto;
+        width: 80%;
+        background-color: #fbfbfb;
+        border-color: white;
+    }
+    #lisealarg {
+        width: 600px;
+        margin: auto;
+    }
+
+
+        @@media only screen and (max-width: 768px) {
+          /* For mobile phones: */
+                #lisealarg
+                {
+                    display:none;
+                }
+        }
+
+    #searchmobile
+    {
+        display:none;
+    }
+    @@media only screen and (max-width: 768px) {
+        /* For mobile phones: */
+        #searchmobile {
+            display: inline;
+        }
+    }
+    #searchbutt {
+        color: white;
+        background-color: #557ee8;
+    }
+</style>
+<body>
+    <div class="fixed-top">
+
+
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow  mb-0">
+                <div class="container mt-0">
+                    <a id="carticon" asp-controller="Cart" asp-action="Index">
+                        @await Component.InvokeAsync("Cart")|
+
+                        <div class="dropdown">
+                            <a class="dropbtn">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-dash" viewBox="0 0 16 16">
+                                    <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z" />
+                                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                </svg>
+                            </a>
+                            <div class="dropdown-content">
+                                @await Component.InvokeAsync("NavCart")
+
+                            </div>
+                        </div>
+
+                    </a>
+
+
+
+
+
+
+
+
+                    <div class="dropdown" id="searchmobile">
+                        <a class="dropbtn">
+
+                            <i class="fas fa-search fa-2x"></i>
+                        </a>
+                        <div class="dropdown-content ">
+                            <form class=" form-row" asp-controller="Home" asp-action="SearchNav">
+                                <input type="text" class="form-group col-8 m-auto" name="word" id="searchinputlarg" />
+                                <input type="submit" class="form-group col-3 m-auto" value="Search" />
+                            </form>
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <a class="navbar-brand" asp-area="" asp-controller="FirstHome" asp-action="FirstIndex">olashop</a>
+
+
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Dashboard">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                            <li id="lisealarg">
+                                <form class=" form-inline" asp-controller="Home" asp-action="SearchNav" method="post">
+                                    <input type="text" class="form-group" name="word" id="searchinputlarg" />
+                                    <button type="submit" class="btn" id="searchbutt"><i class="fas fa-search fa-2x"></i></button>
+                                </form>
+                            </li>
+                        </ul>
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+        @await Component.InvokeAsync("CategoryNav")
+
+    </div>
+    <div class="container-fluid">
+        <main role="main" class="mt">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - olashop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/fontawesome-iconpicker/js/fontawesome-iconpicker.min.js"></script>
+    <script src="~/Swiper/swiper-bundle.min.js"></script>
+    <script src="~/Swiper/swiper-bundle.js"></script>
+    <script src="~/js/toastr.min.js"></script>
+    <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/js/AwesomeMvc.js"></script>
+    <script src="~/js/awem.js"></script>
+
+    <script src="~/js/utils.js"></script>
+    @*used in utils.init and sent on all post requests made by awe*@
+    @Html.AntiForgeryToken()
+
+    @*call init after utils.js and validate.js*@
+    @*@Html.Awe().Init()*@
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

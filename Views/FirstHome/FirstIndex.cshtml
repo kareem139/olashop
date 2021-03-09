@@ -1,0 +1,145 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@{
+    ViewData["Title"] = "FirstIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    @@media all and (min-width:768px) {
+        #mm {
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    }
+
+    #advertise:single-button {
+        display: none;
+    }
+
+    #clothe {
+        border-color: #becaca;
+        border-style: solid;
+        overflow: hidden;
+    }
+</style>
+
+
+<div class="row " id="mm">
+
+    <img class="col-12 col-md-12" src="~/myimage/saleimg.jpg" />
+
+    <div class="col-12 mt-2 mb-2 content">
+
+        <div class="row">
+            <div class="col-md-9" id="clothes">
+
+
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+
+                        <a class="carousel-item active" asp-controller="Home" asp-action="SearchWithCat" asp-route-id="12">
+                            <img src="~/myimage/clothes.png" class="d-block w-100" alt="...">
+                        </a>
+
+                        <a class="carousel-item " asp-controller="Home" asp-action="SearchWithCat" asp-route-id="3">
+                            <img src="~/myimage/tv.jpg" class="d-block w-100" alt="...">
+                        </a>
+
+                        <a class="carousel-item " asp-controller="Home" asp-action="SearchWithCat" asp-route-id="3">
+                            <img src="~/myimage/Electronics-en.jpg" class="d-block w-100" alt="...">
+                        </a>
+
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <img src="~/myimage/Bauducco Cereale.png" class="col-md-3" id="advertise" />
+
+        </div>
+
+        <div class="row">
+            <a asp-controller="Home" asp-action="Index" >
+                <img class="col-md-12 mt-3" src="~/myimage/saleimg.jpg" />
+            </a>
+            <a asp-controller="Home" asp-action="SearchWithCat" asp-route-id="3">
+                <img class="col-md-12 mt-3" src="~/myimage/tvsale.jpg" />
+            </a>
+
+
+        </div>
+
+        <div class=" row p-3">
+
+            <a class="col-2 col-md-2 btn btn-light" style="background-color: #E3E3E5;" asp-controller="Home" asp-action="SearchWithCat" asp-route-id="12">
+                Clothes&Shoes
+            </a>
+            <div class="clo-md-12" id="clothe">
+                <div class="row">
+                    
+                      <img src="~/myimage/Calvin Klein _ Shop men's underwear, t-shirts & jeans _ ASOS.png" class="col-6" />
+                   
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="clo-md-12">
+                                <div class="row">
+                                    
+
+                                        <img src="~/myimage/sho.png" class="col-6" />
+                                        <img src="~/myimage/American Eagle Outfitters Men's & Women's Clothing, Shoes & Accessories.png" class="col-6" />
+                                    
+                                    
+                                        
+                                    
+
+                                </div>
+                            </div>
+                            <div class="clo-md-12 pt-2">
+                                <div class="row">
+
+                                    <img src="~/myimage/Under Armour Herren Oberteil Rival Ausgestattet Full Zip.png" class="col-6" />
+                                    <img src="~/myimage/Tommy Hilfiger dougless sweatshirt in NAVY _ ASOS.png" class="col-6 pt-2" />
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        @{
+
+            if (SignInManager.IsSignedIn(User))
+            {
+                @section Scripts{
+                    <script type="text/javascript">
+                    $(document).ready(function () {
+                        toastr.success("Hi @User.Identity.Name", "Welcome", { hideDuration: 700 });
+
+                    });
+                    </script>
+
+                }
+
+            }
+        }
+

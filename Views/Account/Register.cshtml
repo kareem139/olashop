@@ -1,0 +1,133 @@
+﻿@model olashop.Viewmodels.RegisterVM
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    #myimg
+    {
+        position:absolute;
+        z-index:-1;
+
+    }
+    #hh {
+        max-width: fit-content;
+        margin: auto;
+        background-color: aliceblue;
+        opacity: 1;
+        -webkit-box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.4);
+        -moz-box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.4);
+        box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.4);
+        height: 70vh;
+        border-radius: 5px;
+    }
+
+        #hh:hover {
+            background-color: aliceblue;
+            opacity: 1;
+        }
+    #myhead {
+        margin: auto;
+        text-align: center;
+        background-image:url('~/myimage/Electronics, Cars, Fashion, Collectibles & More _ eBay.png');
+        background-position:center center;
+        background-size:cover;
+    }
+
+    #sitename {
+        margin-top: 20%;
+        font-size: 30px;
+        -webkit-box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.4);
+        -moz-box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.4);
+        box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.4);
+        border-radius: 5px;
+        background-color: #d0dcdc;
+    }
+
+    #backimg
+    {
+        position:absolute;
+        z-index:-1;
+
+    }
+
+</style>
+
+<div class="row">
+ 
+    <div class="col-12">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row" id="hh">
+
+                    <div class="col-12" id="myhead">
+                        <p>
+                            <span>
+                                Register New Account In
+                            </span>
+                           
+                        </p>
+                        <p id="sitename">
+                            <span>KAR</span><span>shop</span>
+                        </p>
+                        
+                    </div>
+                    <form asp-controller="Account" asp-action="Register" method="post" class="m-auto" id="myform">
+
+
+                        <div class=" form-group col-12">
+
+                            <div class="row">
+                                <label asp-for="UserName" class="col-6"></label>
+                                <input asp-for="UserName" class="col-6" />
+                                <span asp-validation-for="UserName"></span>
+                            </div>
+
+                        </div>
+                        <div class=" form-group col-12">
+                            <div class="row">
+
+
+                                <label asp-for="Email" class=" col-6"></label>
+                                <input asp-for="Email" class="col-6" />
+                                <span asp-validation-for="Email"></span>
+
+                            </div>
+
+                        </div>
+                        <div class=" form-group col-12">
+                            <div class="row">
+                                <label asp-for="Password" class="col-6"></label>
+                                <input asp-for="Password" type="password" class="col-6" />
+                                <span asp-validation-for="Password"></span>
+
+
+                            </div>
+                        </div>
+                        <div class=" form-group col-12">
+
+                            <div class="row">
+
+                                <label asp-for="Confirmpassword" class="col-6"></label>
+                                <input asp-for="Confirmpassword" type="password" class="col-6" />
+                                <span asp-validation-for="Confirmpassword"></span>
+
+
+                            </div>
+                        </div>
+                        <div class=" form-group">
+                            <input class=" btn btn-info" type="submit" value="Register" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+           
+        </div>
+
+    </div>
+    
+   
+</div>

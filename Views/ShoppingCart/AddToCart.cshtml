@@ -1,0 +1,108 @@
+﻿@model IEnumerable<olashop.Models.CartItem>
+
+
+
+<style>
+
+    #mycart {
+        height: 350px;
+        border-style: solid;
+        border-color: #efecec;
+    }
+
+    #mycartimg {
+        height: 210px;
+        z-index: 1;
+    }
+
+    #viewpro {
+        visibility: visible;
+        position: absolute;
+        padding-top: 40%;
+        text-align: center;
+        opacity: 0;
+    }
+
+    #mycart:hover #viewpro {
+        visibility: visible;
+        position: absolute;
+        padding-top: 40%;
+        text-align: center;
+        opacity: 1;
+        z-index: 1;
+    }
+
+    #mycart:hover #mycartimg {
+        opacity: .5;
+        /* transform:scale(1.2);*/
+    }
+
+    .myproname {
+        overflow-x: scroll;
+        max-height: 24px;
+    }
+
+        .myproname::-webkit-scrollbar {
+            display: none;
+        }
+</style>
+
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+
+        @*<div class="col-md-3 m-2 p-1" id="mycart">
+            <div class="row">
+                <img src="~/uploads/@item.ImgUrl" class="col-12 m-1" id="mycartimg" />
+                <div class="col-12">
+                    <p class="myproname">
+                        @item.Name
+                    </p>
+
+                </div>
+                <p class="col-12">@item.Price EGP</p>
+                @{ if (item.Quantity <= 0)
+                    {
+                        <p class="col-8 btn btn-secondary m-2 p-1">Not Available</p>
+                    }
+
+                    else
+                    {
+                        <a class="col-8 btn btn-success m-2 p-1">ADD To CART</a>
+                    }
+                }
+
+
+                <div class="col-12" id="viewpro">
+                    <a class=" btn btn-primary m-2 p-1">view</a>
+                </div>
+
+            </div>
+
+        </div>*@
+    }
+
+
+    @*<div class="block span3 p-1 m-2 col-md-2">
+            <div class="product">
+                <img src="~/uploads/@item.ImgUrl" />
+
+            </div>
+            <div class="info">
+                <h4>@item.Name</h4><span class="description">
+
+                </span><span class="price">@item.Price EGP </span><a class="btn btn-info pull-right" href="#"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy Now</a>
+            </div>
+
+        </div>*@
+
+
+
+
+
+
+
+
+</div>

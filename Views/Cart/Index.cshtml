@@ -1,0 +1,83 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container">
+
+
+    <div class=" row">
+
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Num Of Units</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    if (ViewBag.cart != null)
+                    {
+                        foreach (var item in ViewBag.cart)
+                        {
+                            <tr>
+                                <td>@item.Product.Name</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.Product.Price EGP</td>
+                                <td>@((item.Quantity * item.Product.Price))</td>
+                                <td><a class="btn btn-danger" asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Product.Id">Remove</a></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>no product add</td>
+                            <td>0</td>
+                            <td>0 EGP</td>
+                            <td>0</td>
+                            <td><a class="btn btn-success" asp-controller="Home" asp-action="Index">Go To Shopping</a></td>
+                        </tr>
+                    }
+                }
+
+
+            </tbody>
+            <tfoot>
+
+                @{
+
+                    if (ViewBag.Count != null && ViewBag.total != null)
+                    {
+                        <tr>
+                            <th>Total</th>
+                            <th>@ViewBag.Count</th>
+                            <th></th>
+                            <th> @ViewBag.total</th>
+                            <th>@await Component.InvokeAsync("Payment")</th>
+
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <th>Total</th>
+                            <th>0</th>
+                            <th></th>
+                            <th>0</th>
+
+                        </tr>
+                    }
+                }
+
+            </tfoot>
+        </table>
+
+    </div>
+
+</div>

@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    #main {
+        overflow: scroll;
+        max-height: 100vh;
+    }
+
+        #main::-webkit-scrollbar {
+            display: none;
+        }
+
+    @@media all and (max-width: 768px) {
+        #smhide {
+            display: none;
+        }
+        #main{
+            margin-left: 25%;
+        }
+    }
+  
+    
+</style>
+<script>
+
+</script>
+
+<div class="row">
+    <div class="col-3 " id="smhide">
+        @await Component.InvokeAsync("Right")
+    </div>
+    <div class="col-6" id="main">
+        <partial name="_productlist" />
+
+    </div>
+
+    <div class="col-md-3 " id="smhide">
+        @await Component.InvokeAsync("Left")
+       
+    </div>
+
+    @*@Html.Awe().AjaxDropdown("hh").Url(Url.Action("pop1"))
+  
+    @Html.Awe().AjaxDropdown("add2").Url(Url.Action("pop1"))
+    @Html.Awe().AjaxDropdown("add3").Url(Url.Action("pop1"))*@
+
+
+</div>

@@ -1,0 +1,164 @@
+﻿@model IEnumerable<olashop.Models.Product>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<style>
+
+
+
+
+    @*ldmfflmg;dmf*@
+
+    #mycart {
+        height: 350px;
+        border-style: solid;
+        border-color: #efecec;
+    }
+    #mycartimg
+    {
+        height:210px;
+        z-index:1;
+    }
+    #viewpro {
+        visibility: visible;
+        position: absolute;
+        padding-top: 40%;
+        text-align: center;
+        opacity:0;
+
+    }
+        #mycart:hover #viewpro{
+            visibility: visible;
+            position: absolute;
+            padding-top: 40%;
+            text-align: center;
+            opacity:1;
+            z-index:1;
+        }
+    #mycart:hover #mycartimg {
+
+        opacity: .5;
+
+       /* transform:scale(1.2);*/
+
+
+    }
+
+    .myproname
+    {
+        overflow-x:scroll;
+        max-height:24px;
+
+    }
+    .myproname::-webkit-scrollbar
+    {
+        display:none;
+    }
+
+    #qkview {
+        visibility: visible;
+        position: absolute;
+        padding-top: 40%;
+        text-align: center;
+        opacity: 0;
+    }
+        #qkview:target {
+            visibility: visible;
+            position: absolute;
+            padding-top: 40%;
+            text-align: center;
+            opacity: 1;
+            z-index: 1;
+        }
+
+    #qqq {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 2; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+</style>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+
+
+
+
+        <div class="col-md-3 m-2 p-1" id="mycart">
+            <div class="row">
+                <img src="~/uploads/@item.ImgUrl" class="col-12 m-1" id="mycartimg" />
+                <div class="col-12">
+                    <p class="myproname">
+                        @item.Name
+                    </p>
+
+                </div>
+                <p class="col-12">@item.Price EGP</p>
+                @{ if (item.Quantity <= 0)
+                    {
+                        <p class="col-8 btn btn-secondary m-2 p-1">Not Available</p>
+                    }
+
+                    else
+                    {
+                        <a class="col-8 btn btn-success m-2 p-1" asp-controller="Cart" asp-action="AddToMyCart" asp-route-id="@item.Id">ADD To CART</a>
+                    }
+                }
+
+
+                <div class="col-12" id="viewpro">
+                    <div class="  m-2 p-1" id="vquick">
+
+
+                        @*@(Html.Awe().InitPopup()
+                              .Name("QuickProductView")
+                              .Url(Url.Action("QuickProductView","Home"))
+                              .Mod(o => o.OutClickClose())
+                              .Draggable(false)
+                              .Title("Quick View")
+                              .MaxWidth(1000)
+                              .Height(600)
+                              )
+
+                        @Html.Awe().Button().Text("QuickView").OnClick(Html.Awe().OpenPopup("QuickProductView").Params(new { id = item.Id }))*@
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    }
+
+    <div class="col-8 m-auto" id="qqq">
+
+       
+       
+        
+      
+    </div>
+
+
+
+</div>
+
+@section Scripts{
+
+    <script type="text/javascript">
+     
+
+    </script>
+}

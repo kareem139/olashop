@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace olashop.Models
+{
+    public class CartItemsVM
+    {
+        public Cart Cart { get; set; }
+        public decimal totalitemprice { get; set; }
+    }
+}

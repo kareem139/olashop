@@ -1,0 +1,43 @@
+﻿@model IEnumerable<olashop.Models.Category>
+
+<style>
+    li{
+        list-style:none;
+    }
+
+    h4
+    {
+       font-size:inherit; 
+    }
+    .inp
+    {
+            width: -webkit-fill-available;
+    }
+</style>
+<div class="row">
+    <div class=" col-md-6">
+        <div class="header">
+            <h4>Category</h4>
+        </div>
+        <ul class="p-0">
+            @foreach (var item in Model)
+            {
+                <li><a asp-controller="Home" asp-action="SearchWithCat" asp-route-id="@item.Id">@item.Name</a></li>
+            }
+        </ul>
+
+
+        <div class="header">
+            <h4>Price</h4>
+        </div>
+        <form asp-controller="Home" asp-action="SearchWithPrice" method="post">
+            <ul class=" p-0">
+                <li><input type="number" name="price" class="inp" /></li>
+                <li><input type="submit" value="submit" /></li>
+            </ul>
+        </form>
+
+    </div>
+
+</div>
+
